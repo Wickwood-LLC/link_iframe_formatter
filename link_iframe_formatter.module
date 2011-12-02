@@ -10,12 +10,12 @@ function link_iframe_formatter_field_formatter_info() {
       'field types' => array('link_field'),
       'settings' => array(
         'width' => '640',
-        'height' => '480', 
+        'height' => '480',
       ),
     ),
   );
 }
- 
+
 /*
  * Implements hook_field_formatter_settings_form().
  */
@@ -23,7 +23,7 @@ function link_iframe_formatter_field_formatter_settings_form($field, $instance, 
   $settings = $instance['display'][$view_mode]['settings'];
 
   $element = array();
-  
+
   $element['width'] = array(
     '#title' => t('Width'),
     '#type' => 'textfield',
@@ -37,7 +37,7 @@ function link_iframe_formatter_field_formatter_settings_form($field, $instance, 
     '#default_value' => $settings['height'],
     '#required' => TRUE,
   );
-  
+
   return $element;
 }
 
@@ -46,10 +46,10 @@ function link_iframe_formatter_field_formatter_settings_form($field, $instance, 
  */
 function link_iframe_formatter_field_formatter_settings_summary($field, $instance, $view_mode) {
   $settings = $instance['display'][$view_mode]['settings'];
-  
-  $summary = t('Width').': '.$settings['width'].', ';
-  $summary .= t('Height').': '.$settings['height'];
-  
+
+  $summary = t('Width') . ': ' . $settings['width'] . ', ';
+  $summary .= t('Height') . ': ' . $settings['height'];
+
   return $summary;
 }
 
