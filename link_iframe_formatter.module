@@ -69,6 +69,7 @@ function link_iframe_formatter_field_formatter_view($entity_type, $entity, $fiel
           'src' => $item['url'],
           'width' => $display['settings']['width'],
         ),
+        '#value' => ''
       );
     }
   }
