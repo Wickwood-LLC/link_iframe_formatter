@@ -52,8 +52,7 @@ function link_iframe_formatter_field_formatter_settings_form($field, $instance, 
 function link_iframe_formatter_field_formatter_settings_summary($field, $instance, $view_mode) {
   $settings = $instance['display'][$view_mode]['settings'];
 
-  $summary = t('Width') . ': ' . $settings['width'] . ', ';
-  $summary .= t('Height') . ': ' . $settings['height'];
+  $summary = t('Width : @width, Height : @height', array('@width' => $settings['width'], '@height' => $settings['height']));
 
   return $summary;
 }
