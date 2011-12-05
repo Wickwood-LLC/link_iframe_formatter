@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Defines a formatter that renders a link like an iframe
+ */
+
+/**
  * Implements hook_field_formatter_info().
  */
 function link_iframe_formatter_field_formatter_info() {
