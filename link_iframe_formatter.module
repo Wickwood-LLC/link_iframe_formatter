@@ -64,13 +64,16 @@ function link_iframe_formatter_field_formatter_view($entity_type, $entity, $fiel
   $elements = array();
   foreach ($items as $delta => $item) {
     if ($display['type'] == 'link_iframe_formatter_iframe') {
+      $link_options = $item;
+      unset($link_options['title']);
+      unset($link_options['url']);
       $elements[$delta] = array(
         '#type' => 'html_tag',
         '#tag' => 'iframe',
         '#attributes' => array(
           'height' => $display['settings']['height'],
           'name' => $item['title'],
-          'src' => $item['url'],
+          'src' => url($item['url'], $link_options),
           'width' => $display['settings']['width'],
         ),
         '#value' => ''
