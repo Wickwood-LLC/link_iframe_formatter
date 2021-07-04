@@ -4,5 +4,5 @@ type: module
 core: 8.x
 version: VERSION
 dependencies:
-  - link
+  - drupal:link
 package: Fields
