@@ -24,10 +24,10 @@ class LinkIframeFormatter extends LinkFormatter {
    */
   public static function defaultSettings() {
     return [
-        'width' => '640',
-        'height' => '480',
-        'class' => '',
-        'original' => '',
+      'width' => '640',
+      'height' => '480',
+      'class' => '',
+      'original' => '',
     ];
   }
 
@@ -91,14 +91,14 @@ class LinkIframeFormatter extends LinkFormatter {
       $url = $this->buildUrl($item);
 
       $element[$delta] = [
-          '#theme' => 'link_iframe_formatter',
-          '#url' => $url,
-          '#width' => $settings['width'],
-          '#height' => $settings['height'],
-          '#class' => $settings['class'],
-          '#original' => $settings['original'],
-          '#path' => $url,
-        ];
+        '#theme' => 'link_iframe_formatter',
+        '#url' => $url,
+        '#width' => $settings['width'],
+        '#height' => $settings['height'],
+        '#class' => $settings['class'],
+        '#original' => $settings['original'],
+        '#path' => $url,
+      ];
     }
     return $element;
   }
