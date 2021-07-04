@@ -1,0 +1,16 @@
+field.formatter.settings.link_iframe_formatter:
+  type: mapping
+  label: 'Link iframe formatter settings'
+  mapping:
+    width:
+      type: integer
+      label: 'Width'
+    height:
+      type: integer
+      label: 'Height'
+    class:
+      type: string
+      label: 'Class'
+    original:
+      type: boolean
+      label: 'Show original link'

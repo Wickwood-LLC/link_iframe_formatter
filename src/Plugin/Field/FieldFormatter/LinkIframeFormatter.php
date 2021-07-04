@@ -24,10 +24,10 @@ class LinkIframeFormatter extends LinkFormatter {
    */
   public static function defaultSettings() {
     return [
-      'width' => '640',
-      'height' => '480',
+      'width' => 640,
+      'height' => 480,
       'class' => '',
-      'original' => '',
+      'original' => FALSE,
     ];
   }
 
@@ -62,7 +62,7 @@ class LinkIframeFormatter extends LinkFormatter {
       '#options' => [
         TRUE => $this->t('On'),
         FALSE => $this->t('Off'),
-        ],
+      ],
       '#default_value' => $this->getSetting('original'),
       '#required' => FALSE,
     ];
@@ -75,7 +75,12 @@ class LinkIframeFormatter extends LinkFormatter {
    */
   public function settingsSummary() {
     $summary = [];
-    $summary[] = $this->t('Width: @width, Height: @height, Class: @class, Original link is @original', ['@width' => $this->getSetting('width'), '@height' => $this->getSetting('height'), '@class' => $this->getSetting('class') == "" ? 'None' : $this->getSetting('class'), '@original' => $this->getSetting('original') ? t('On') : t('Off')]);
+    $summary[] = $this->t('Width: @width, Height: @height, Class: @class, Original link is @original', [
+      '@width' => $this->getSetting('width'),
+      '@height' => $this->getSetting('height'),
+      '@class' => $this->getSetting('class') == "" ? 'None' : $this->getSetting('class'),
+      '@original' => $this->getSetting('original') ? t('On') : t('Off'),
+    ]);
     return $summary;
   }
 
