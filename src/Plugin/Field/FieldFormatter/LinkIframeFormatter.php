@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\link_iframe_formatter\Plugin\Field\FieldFormatter\IframeLinkFormatter.
- *
- */
-
 namespace Drupal\link_iframe_formatter\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
@@ -43,31 +37,31 @@ class LinkIframeFormatter extends LinkFormatter {
   public function settingsForm(array $form, FormStateInterface $form_state)  {
 
     $elements['width'] = array(
-      '#title' => t('Width'),
+      '#title' => $this->t('Width'),
       '#type' => 'textfield',
       '#default_value' => $this->getSetting('width'),
       '#required' => TRUE,
     );
 
     $elements['height'] = array(
-      '#title' => t('Height'),
+      '#title' => $this->t('Height'),
       '#type' => 'textfield',
       '#default_value' => $this->getSetting('height'),
       '#required' => TRUE,
     );
 
     $elements['class'] = array(
-      '#title' => t('Class'),
+      '#title' => $this->t('Class'),
       '#type' => 'textfield',
       '#default_value' => $this->getSetting('class'),
       '#required' => FALSE,
     );
     $elements['original'] = array(
-      '#title' => t('Show original link'),
+      '#title' => $this->t('Show original link'),
       '#type' => 'radios',
       '#options' => array(
-        TRUE => t('On'),
-        FALSE => t('Off'),
+        TRUE => $this->t('On'),
+        FALSE => $this->t('Off'),
         ),
       '#default_value' => $this->getSetting('original'),
       '#required' => FALSE,
@@ -81,7 +75,7 @@ class LinkIframeFormatter extends LinkFormatter {
    */
   public function settingsSummary() {
     $summary = array();
-    $summary[] = t('Width: @width, Height: @height, Class: @class, Original link is @original', array('@width' => $this->getSetting('width'), '@height' => $this->getSetting('height'), '@class' => $this->getSetting('class') == "" ? 'None' : $this->getSetting('class'), '@original' => $this->getSetting('original') ? t('On') : t('Off')));
+    $summary[] = $this->t('Width: @width, Height: @height, Class: @class, Original link is @original', array('@width' => $this->getSetting('width'), '@height' => $this->getSetting('height'), '@class' => $this->getSetting('class') == "" ? 'None' : $this->getSetting('class'), '@original' => $this->getSetting('original') ? t('On') : t('Off')));
     return $summary;
   }
 
