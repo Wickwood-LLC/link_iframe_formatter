@@ -14,3 +14,6 @@ field.formatter.settings.link_iframe_formatter:
     original:
       type: boolean
       label: 'Show original link'
+    disable_scrolling:
+      type: string
+      label: 'Disable scrolling'

@@ -28,6 +28,7 @@ class LinkIframeFormatter extends LinkFormatter {
       'height' => 480,
       'class' => '',
       'original' => FALSE,
+      'disable_scrolling' => FALSE,
     ];
   }
 
@@ -48,6 +49,12 @@ class LinkIframeFormatter extends LinkFormatter {
       '#type' => 'textfield',
       '#default_value' => $this->getSetting('height'),
       '#required' => TRUE,
+    ];
+
+    $elements['disable_scrolling'] = [
+      '#title' => t('Disable Scrolling'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->getSetting('disable_scrolling'),
     ];
 
     $elements['class'] = [
@@ -75,9 +82,10 @@ class LinkIframeFormatter extends LinkFormatter {
    */
   public function settingsSummary() {
     $summary = [];
-    $summary[] = $this->t('Width: @width, Height: @height, Class: @class, Original link is @original', [
+    $summary[] = $this->t('Width: @width, Height: @height, Scrolling: @scrolling, Class: @class, Original link is @original', [
       '@width' => $this->getSetting('width'),
       '@height' => $this->getSetting('height'),
+      '@scrolling' => $this->getSetting('disable_scrolling') ? 'no' : 'yes',
       '@class' => $this->getSetting('class') == "" ? 'None' : $this->getSetting('class'),
       '@original' => $this->getSetting('original') ? t('On') : t('Off'),
     ]);
@@ -100,6 +108,7 @@ class LinkIframeFormatter extends LinkFormatter {
         '#url' => $url,
         '#width' => $settings['width'],
         '#height' => $settings['height'],
+        '#scrolling' => $settings['disable_scrolling'] ? 'no' : 'yes',
         '#class' => $settings['class'],
         '#original' => $settings['original'],
         '#path' => $url,

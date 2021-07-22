@@ -10,6 +10,8 @@ use Drupal\Tests\BrowserTestBase;
 
 /**
  * Defines a class for testing link iframe formatter.
+ *
+ * @group link_iframe_formatter
  */
 class LinkIframeFormatterTest extends BrowserTestBase {
 
@@ -86,6 +88,7 @@ class LinkIframeFormatterTest extends BrowserTestBase {
     $this->assertEquals(270, $iframe->getAttribute('height'));
     $this->assertEquals(350, $iframe->getAttribute('width'));
     $this->assertEquals('some-class', $iframe->getAttribute('class'));
+    $this->assertEquals('yes', $iframe->getAttribute('scrolling'));
     $link = $this->assertSession()->elementExists('named', ['link', $url]);
     $this->assertEquals($url, $link->getAttribute('href'));
     $this->assertSession()->pageTextContains('You may view the original link at');

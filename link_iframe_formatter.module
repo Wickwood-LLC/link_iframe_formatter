@@ -11,7 +11,15 @@
 function link_iframe_formatter_theme() {
   return [
     'link_iframe_formatter' => [
-      'variables' => ['url' => NULL, 'width' => NULL, 'height' => NULL, 'class' => NULL, 'original' => NULL, 'path' => NULL],
+      'variables' => [
+        'url' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+        'class' => NULL,
+        'original' => NULL,
+        'path' => NULL,
+        'scrolling' => 'yes',
+      ],
       'template' => 'link-iframe-formatter',
     ],
   ];
