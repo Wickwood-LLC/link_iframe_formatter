@@ -1,7 +1,6 @@
 {% spaceless %}
-  <iframe width="{{ width }}" height="{{ height }}" src="{{ url }}" class="{{ class }}" frameborder="0" scrolling="{{ scrolling }}" allowfullscreen></iframe>
+  <iframe width="{{ width }}" height="{{ height }}" src="{{ url }}" class="{{ class }}" frameborder="0" allowfullscreen style="min-width:{{ min_width }};max-width:{{ max_width }};min-height:{{ min_height }};max-height:{{ max_height }};"></iframe>
   {% if original %}
-    <div class="link-iframe-formatter-original">{{ 'You may view the original link at:'|t }} <a
-    href="{{ url }}">{{ url }}</a><div>
+    <div class="link-iframe-formatter-original">{{ 'You may view the original link at:'|t }} <a href="{{ url }}">{{ url }}</a></div>
   {% endif %}
 {% endspaceless %}
