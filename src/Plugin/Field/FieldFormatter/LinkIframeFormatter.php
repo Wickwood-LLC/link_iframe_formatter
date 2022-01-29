@@ -24,10 +24,11 @@ class LinkIframeFormatter extends LinkFormatter {
    */
   public static function defaultSettings() {
     return [
-      'width' => 640,
-      'height' => 480,
+      'responsive' => TRUE,
+      'width' => '640',
+      'height' => '480',
       'class' => '',
-      'original' => FALSE,
+      'original' => '',
       'disable_scrolling' => FALSE,
     ];
   }
@@ -37,11 +38,24 @@ class LinkIframeFormatter extends LinkFormatter {
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
 
+    $elements['responsive'] = array(
+      '#title' => $this->t('Responsive iFrame'),
+      '#type' => 'checkbox',
+      '#description' => $this->t("Make the iframe fill the width of it's container"),
+      '#default_value' => $this->getSetting('responsive'),
+    );
+    $responsive_checked_state = array(
+      'visible' => array(
+        ':input[name*="responsive"]' => array('checked' => FALSE),
+      )
+    );
+
     $elements['width'] = [
       '#title' => $this->t('Width'),
       '#type' => 'textfield',
       '#default_value' => $this->getSetting('width'),
       '#required' => TRUE,
+      '#states' => $responsive_checked_state,
     ];
 
     $elements['height'] = [
@@ -49,6 +63,7 @@ class LinkIframeFormatter extends LinkFormatter {
       '#type' => 'textfield',
       '#default_value' => $this->getSetting('height'),
       '#required' => TRUE,
+      '#states' => $responsive_checked_state,
     ];
 
     $elements['disable_scrolling'] = [
@@ -82,13 +97,19 @@ class LinkIframeFormatter extends LinkFormatter {
    */
   public function settingsSummary() {
     $summary = [];
-    $summary[] = $this->t('Width: @width, Height: @height, Scrolling: @scrolling, Class: @class, Original link is @original', [
+    if ($this->getSetting('responsive')) {
+      $dimensions = $this->t('Responsive');
+    }
+    else {
+      $dimensions = $this->t('Width: @width, Height: @height', array('@width' => $this->getSetting('width'), '@height' => $this->getSetting('height')));
+    }
+    $summary[] = $this->t( '@dimensions, Width: @width, Height: @height, Scrolling: @scrolling, Class: @class, Original link is @original', [
+      '@dimensions' => $dimensions,
       '@width' => $this->getSetting('width'),
       '@height' => $this->getSetting('height'),
       '@scrolling' => $this->getSetting('disable_scrolling') ? 'no' : 'yes',
       '@class' => $this->getSetting('class') == "" ? 'None' : $this->getSetting('class'),
-      '@original' => $this->getSetting('original') ? t('On') : t('Off'),
-    ]);
+      '@original' => $this->getSetting('original') ? $this->t('On') : $this->t('Off')]);
     return $summary;
   }
 
@@ -103,11 +124,14 @@ class LinkIframeFormatter extends LinkFormatter {
       // By default use the full URL as the link text.
       $url = $this->buildUrl($item);
 
+      $width = ($settings['responsive']) ? '100%' : $settings['width'];
+      $height = ($settings['responsive']) ? 'auto' : $settings['height'];
+
       $element[$delta] = [
         '#theme' => 'link_iframe_formatter',
         '#url' => $url,
-        '#width' => $settings['width'],
-        '#height' => $settings['height'],
+        '#width' => $width,
+        '#height' => $height,
         '#scrolling' => $settings['disable_scrolling'] ? 'no' : 'yes',
         '#class' => $settings['class'],
         '#original' => $settings['original'],
