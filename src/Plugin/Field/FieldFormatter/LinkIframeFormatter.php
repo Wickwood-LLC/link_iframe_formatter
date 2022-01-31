@@ -137,12 +137,18 @@ class LinkIframeFormatter extends LinkFormatter {
         '#original' => $settings['original'],
         '#path' => $url,
       ];
+
+      $element['#attached'] = [
+        'library' => 'link_iframe_formatter/scripts',
+        'drupalSettings' => [
+          'linkIframeFormatter' =>[
+            'scripts' => [
+              'responsive' => $this->getSetting('responsive'),
+            ],
+          ],
+        ],
+      ];
     }
     return $element;
-  }
-
-  public function build() {
-    $build['#attached']['library'][] = 'link_iframe_formatter/scripts';
-    $build['#attached']['drupalSettings']['scripts']['responsive'] = $this->getSetting('responsive');
   }
 }
