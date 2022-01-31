@@ -140,9 +140,4 @@ class LinkIframeFormatter extends LinkFormatter {
     }
     return $element;
   }
-
-  public function link_iframe_formatter_page_attachments( &$attachments) {
-    $attachments['#attached']['library'][] = 'link_iframe_formatter/scripts';
-    $attachments['#attached']['drupalSettings']['linkIframeFormatter']['scripts']['responsive'] = $this->getSetting('responsive');
-  }
 }
