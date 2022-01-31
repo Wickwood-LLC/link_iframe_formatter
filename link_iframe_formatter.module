@@ -26,7 +26,7 @@ function link_iframe_formatter_theme() {
 
 }
 
-function link_iframe_formatter_page_attachments( &$attachments) {
-  $attachments['#attached']['library'][] = 'link_iframe_formatter/scripts';
-  $attachments['#attached']['drupalSettings']['scripts']['responsive'] = $variables['element']['#settings']['responsive'];
-}
+// function link_iframe_formatter_page_attachments( &$attachments) {
+//   $attachments['#attached']['library'][] = 'link_iframe_formatter/scripts';
+//   $attachments['#attached']['drupalSettings']['scripts']['responsive'] = $variables['element']['#settings']['responsive'];
+// }
