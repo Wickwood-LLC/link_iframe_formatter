@@ -1,0 +1,7 @@
+scripts:
+  js:
+    js/link-iframe-formatter.js: {}
+
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
